@@ -1,0 +1,201 @@
+/* src/Module.css - DÜZELTİLMİŞ STABİL VERSİYON */
+
+/* --- ANA KAPLAYICI --- */
+.ModuleContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden; /* Ana kutu taşmasın */
+}
+
+/* --- BAŞLIK ALANI (Geri Butonu Sol, Başlık Orta) --- */
+.ModuleHeader {
+  display: grid;
+  grid-template-columns: 150px 1fr 150px; /* Sol - Orta - Sağ */
+  align-items: center;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f0f4f8;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.ModuleHeader h1 {
+  grid-column: 2;
+  font-size: 3rem;
+  color: #0056b3;
+  margin: 0;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.BackButton {
+  grid-column: 1;
+  justify-self: start;
+  background: white;
+  border: 2px solid #333;
+  color: #333;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.BackButton:hover { background: #333; color: white; }
+
+/* --- İÇERİK ALANI (Sihirli Kısım) --- */
+.ModuleContent {
+  flex-grow: 1; /* Kalan tüm alanı kapla */
+  width: 100%;
+  overflow: hidden; /* İçerik taşarsa kendi içinde kaysın */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* --- PLANLAMA IZGARALARI --- */
+.SelectionContainer {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Sadece içerik kaysın */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.PageTitle {
+  font-family: 'Fredoka', sans-serif; font-size: 2.5rem; font-weight: 600;
+  font-style: italic; color: #ff9f43; margin-bottom: 30px; text-align: center; flex-shrink: 0;
+}
+
+/* Kutu Düzenleri */
+.GridTwo { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; width: 90%; max-width: 1000px; margin-bottom: 30px; }
+.GridThree { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; width: 95%; max-width: 1200px; margin-bottom: 30px; }
+.GridFour { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 90%; max-width: 1000px; margin-bottom: 30px; }
+
+/* Seçim Kartı */
+.SelectionCard {
+  background-color: white; border: 3px solid #e0e0e0; border-radius: 25px;
+  padding: 30px; text-align: center; cursor: pointer; transition: all 0.2s;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: 200px; height: 100%;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+}
+.SelectionCard:hover {
+  border-color: #ff9f43; background-color: #fffaf0;
+  transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.SelectionCard h3 { font-size: 1.6rem; color: #333; margin: 15px 0; font-weight: 700; }
+.SelectionCard p { font-size: 1.1rem; color: #666; line-height: 1.4; }
+.CardIcon { font-size: 4rem; margin-bottom: 10px; }
+
+/* Karakter Grid */
+.CharGrid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 15px; width: 95%; max-width: 1200px; padding-bottom: 40px;
+}
+.CharCard {
+  background: white; border: 2px solid #eee; border-radius: 15px; padding: 10px;
+  cursor: pointer; transition: 0.2s; text-align: center;
+}
+.CharCard:hover { border-color: #54a0ff; background: #f0f8ff; transform: scale(1.05); }
+.CharCard img { width: 100%; height: 110px; object-fit: contain; }
+.CharCard p { font-weight: bold; font-size: 1rem; margin-top: 5px; color: #333; }
+
+/* --- ÖYKÜ SEÇENEKLERİ (DÜZELTİLDİ) --- */
+.SentenceSelection {
+  display: flex; flex-direction: column; gap: 15px; 
+  width: 80%; max-width: 900px;
+}
+.SentenceCard {
+  background-color: #fff9c4; border: 2px dashed #fbc531; border-radius: 15px;
+  padding: 20px; font-size: 1.3rem; cursor: pointer; transition: 0.2s; text-align: left;
+  color: #333;
+}
+.SentenceCard:hover { transform: scale(1.01); background-color: #fff; border-style: solid; }
+
+/* --- YAZAR MASASI (3 SÜTUNLU YAPI) --- */
+.WritingModule {
+  display: grid;
+  grid-template-columns: 300px 1fr 350px; /* Sabit Sol - Esnek Orta - Sabit Sağ */
+  gap: 20px; height: 100%; width: 100%; padding: 5px;
+  overflow: hidden;
+}
+
+/* Sol Sütun */
+.InspirationColumn {
+  background-color: #f8f9fa; border: 2px solid #e0e8ef; border-radius: 15px; padding: 20px;
+  overflow-y: auto; text-align: center; display: flex; flex-direction: column; align-items: center;
+}
+.InspirationImage {
+  width: 100%; max-height: 250px; object-fit: contain; 
+  border-radius: 10px; margin-bottom: 15px; border: 4px solid white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+/* Orta Sütun */
+.WritingArea {
+  display: flex; flex-direction: column; height: 100%; overflow: hidden;
+}
+.WritingTextarea {
+  flex-grow: 1; font-size: 1.6rem; font-family: 'Segoe UI', Arial, sans-serif;
+  padding: 25px; border: 3px solid #ddd; border-radius: 20px; line-height: 1.6;
+  resize: none; outline: none; margin-bottom: 10px;
+}
+.WritingTextarea:focus { border-color: #ff9f43; background-color: #fffdf8; }
+
+/* Sağ Sütun */
+.FeedbackArea {
+  background-color: #f8f9fa; border: 2px solid #e0e8ef; border-radius: 15px;
+  padding: 20px; display: flex; flex-direction: column; overflow-y: auto;
+}
+.FeedbackBox {
+  flex-grow: 1; background-color: white; border-radius: 15px; padding: 15px;
+  font-size: 1.1rem; line-height: 1.5; color: #333; overflow-y: auto;
+  border: 1px solid #eee;
+}
+.ActionButtons { display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px; }
+.ActionButton {
+  background: #0056b3; color: white; border: none; padding: 12px; border-radius: 10px;
+  font-size: 1.2rem; font-weight: bold; cursor: pointer;
+}
+.NextStepButton {
+  background: #27ae60; color: white; border: none; padding: 15px;
+  font-size: 1.4rem; border-radius: 15px; cursor: pointer; font-weight: bold;
+}
+
+/* Modal */
+.ModalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 999; display: flex; justify-content: center; align-items: center; }
+.ModalContent { background: white; padding: 40px; border-radius: 20px; width: 60%; max-height: 80vh; overflow-y: auto; position: relative; }
+.CloseButton { position: absolute; top: 20px; right: 20px; font-size: 2rem; border: none; background: none; cursor: pointer; }
+.StartButtonBig { background: #27ae60; color: white; border: none; padding: 15px 40px; font-size: 1.4rem; border-radius: 30px; cursor: pointer; margin-top: 20px; }
+
+/* Paylaşma Modülü (2 Sütun) */
+.WritingModule.two-column {
+    grid-template-columns: 1fr 1fr;
+}
+/* --- KÜÇÜK EKRANLAR İÇİN GRID AYARI --- */
+
+@media (max-width: 1300px) {
+  /* Yazar Masası Sütunlarını Daralt */
+  .WritingModule {
+    grid-template-columns: 250px 1fr 280px; /* Yan sütunları biraz kıstık */
+    gap: 15px;
+  }
+  
+  /* Planlama Atölyesi Gridleri */
+  .GridThree {
+    gap: 15px;
+  }
+  .SelectionCard {
+    min-height: 180px; /* Kutuları biraz kısalttık */
+    padding: 15px;
+  }
+  .CardIcon {
+    font-size: 3rem; /* İkonları biraz küçülttük */
+  }
+}

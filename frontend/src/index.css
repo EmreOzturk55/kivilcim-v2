@@ -1,0 +1,48 @@
+/* src/index.css */
+:root {
+  --primary: #ff9f43;      /* Turuncu */
+  --secondary: #54a0ff;    /* Mavi */
+  --bg-color: #f0f4f8;     /* Arka plan */
+  --text-color: #2d3436;
+  --font-main: 'Nunito', sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  font-family: var(--font-main);
+  color: var(--text-color);
+  overflow: hidden; /* Kaydırma çubuğu asla çıkmasın */
+}
+
+* {
+  box-sizing: border-box;
+}
+/* --- OTOMATİK ÖLÇEKLEME (RESPONSIVE SCALING) --- */
+
+/* 1. Orta Boy Laptoplar (1440px ve altı) */
+@media (max-width: 1440px) {
+  html {
+    font-size: 14px; /* Normalde 16px'tir. %12.5 küçüldü. */
+  }
+}
+
+/* 2. Küçük Laptoplar ve Eski Monitörler (1280px ve altı) */
+@media (max-width: 1280px) {
+  html {
+    font-size: 12px; /* %25 küçüldü. Her şey ekrana sığar. */
+  }
+}
+
+/* 3. Dikey Alanı Dar Ekranlar (Kısa Ekranlar - Örn: 1366x768) */
+@media (max-height: 800px) {
+  html {
+    font-size: 12px; /* Dikey sığma için küçült */
+  }
+  .MainContainer, .ScreenContainer {
+    height: 98vh; /* Boşlukları azalt */
+    padding: 10px;
+  }
+}

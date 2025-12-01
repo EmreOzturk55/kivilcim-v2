@@ -1,0 +1,171 @@
+/* src/App.css - KIVILCIM v2.4 (HİKAYE HARİTASI & MODAL DÜZELTMESİ) */
+
+:root {
+  --primary: #ff9f43;      /* Turuncu */
+  --secondary: #54a0ff;    /* Mavi */
+  --success: #27ae60;      /* Yeşil */
+  --bg-color: #f0f4f8;     
+  --text-color: #2d3436;   
+  --font-main: 'Nunito', 'Segoe UI', sans-serif;
+}
+
+html, body, #root {
+  height: 100%; margin: 0; padding: 0;
+  background-color: var(--bg-color);
+  font-family: var(--font-main);
+  color: var(--text-color);
+  overflow: hidden;
+}
+
+.App { width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center; }
+
+.MainContainer, .ScreenContainer {
+  width: 95%; max-width: 1600px; height: 95vh;
+  background-color: white; border-radius: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0; position: relative; overflow: hidden;
+  border: 4px solid white; box-sizing: border-box;
+}
+
+/* HEADER */
+.HeaderArea { text-align: center; margin-top: 20px; margin-bottom: 10px; flex-shrink: 0; width: 100%; }
+.MainMascot { height: 140px; object-fit: contain; margin-bottom: 5px; }
+.HeaderArea h1 { font-size: 3.5rem; margin: 0; color: var(--primary); font-weight: 900; letter-spacing: -1px; text-shadow: 2px 2px 0px #ffeaa7; }
+.App-Motto { font-size: 1.4rem; color: var(--secondary); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
+
+/* ANA MENÜ */
+.MenuGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; width: 85%; max-width: 1100px; height: 100%; align-content: center; padding-bottom: 20px; overflow-y: auto; }
+.MenuCard { background-color: #fff; border: 3px solid #eee; border-radius: 25px; padding: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; transition: 0.3s; min-height: 160px; height: 100%; }
+.MenuCard.Active { background-color: var(--primary); color: white; border-color: transparent; box-shadow: 0 8px 0px #e58e26; cursor: pointer; }
+.MenuCard.Active:hover { transform: translateY(-3px); }
+.MenuCard.Disabled { background-color: #f1f2f6; border: 3px dashed var(--secondary); color: #a4b0be; cursor: not-allowed; opacity: 0.8; }
+.MenuCard h2 { font-size: 1.8rem; margin: 0; font-weight: 800; }
+.MenuCard .CardIcon { font-size: 3rem; margin-bottom: 10px; }
+.MenuCard p { margin-top: 5px; font-size: 1.2rem; }
+
+/* BUTONLAR */
+.CornerButton { position: absolute; top: 30px; width: 60px; height: 60px; border-radius: 50%; background: white; border: 3px solid var(--primary); color: var(--primary); font-size: 2rem; font-weight: 900; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; z-index: 50; }
+.CornerButton:hover { background: var(--primary); color: white; }
+.RightTop { right: 30px; } .LeftTop { left: 30px; }
+
+/* MODAL (POP-UP) - KAYDIRMA ÇUBUĞU GİZLENDİ */
+.ModalOverlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; display: flex; justify-content: center; align-items: center; backdrop-filter: blur(5px); }
+.ModalContent { 
+  background: white; padding: 50px; border-radius: 30px; 
+  width: 70%; max-width: 1000px; max-height: 90vh; 
+  overflow-y: auto; /* İçerik taşarsa kaydır */
+  position: relative; box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+/* Kaydırma çubuğunu gizle (ama kaydırmaya izin ver) */
+.ModalContent::-webkit-scrollbar { width: 0px; background: transparent; }
+
+.CloseButton { position: absolute; top: 20px; right: 20px; font-size: 2.5rem; border: none; background: none; cursor: pointer; color: #aaa; }
+.ModalTitle { 
+  color: var(--success); /* Yeşil Başlık (İsteğiniz) */
+  font-size: 2.5rem; margin-top: 0; border-bottom: 3px dashed #eee; padding-bottom: 15px; 
+}
+
+/* --- HİKAYE HARİTASI KARTI (YENİ TASARIM) --- */
+.StoryMapCard {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 15px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.StoryMapCard:hover {
+  border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transform: scale(1.01);
+}
+.StoryRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+.StoryIcon { font-size: 1.5rem; }
+.StoryLabel { font-weight: bold; color: var(--secondary); min-width: 80px; }
+.StoryText { color: #333; }
+/* --- HİKAYE HARİTASI KARTI (GÜZELLEŞTİRİLMİŞ) --- */
+
+.StoryMapCard {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 18px; /* Daha yuvarlak */
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Satırlar arası boşluk */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.03);
+}
+
+.StoryMapCard:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 25px rgba(255, 159, 67, 0.2);
+  transform: translateY(-3px);
+}
+
+.StoryRow {
+  display: flex;
+  align-items: flex-start; /* Çok satırlı olursa yukarı hizala */
+  gap: 12px;
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+
+/* İKON */
+.StoryIcon { 
+  font-size: 1.4rem; 
+  min-width: 30px; /* Hizalama bozulmasın */
+  text-align: center;
+  margin-top: 3px; /* Metinle optik hizalama */
+}
+
+/* ETİKET (Renkli Kutucuklar) */
+.StoryLabel { 
+  font-weight: 800; 
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 8px;
+  min-width: 85px; /* Hepsi eşit genişlikte olsun */
+  text-align: center;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Kişi Etiketi: Mavi */
+.StoryRow:nth-child(1) .StoryLabel {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  border: 1px solid #bbdefb;
+}
+
+/* Yer Etiketi: Yeşil */
+.StoryRow:nth-child(2) .StoryLabel {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+/* Olay Etiketi: Turuncu */
+.StoryRow:nth-child(3) .StoryLabel {
+  background-color: #fff3e0;
+  color: #ef6c00;
+  border: 1px solid #ffe0b2;
+}
+
+/* METİN */
+.StoryText { 
+  color: #333; 
+  font-weight: 500;
+  flex-grow: 1; 
+}
