@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { TASLAK_BILGI_METINLERI } from '../data';
 
-const API_URL = "https://kivilcim-v2-backend.onrender.com";
+// Eğer Vercel'deysen oradaki ayarı al, bilgisayardaysan localhost kullan
+const API_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
 
 const getImageUrl = (path) => {
     if (typeof path === 'object' || (typeof path === 'string' && path.startsWith('data:'))) return path;

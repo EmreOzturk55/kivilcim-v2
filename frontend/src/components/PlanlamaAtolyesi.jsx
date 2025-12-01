@@ -4,8 +4,8 @@ import axios from 'axios';
 import { KARAKTERLER, TEMALAR, BILGI_KARTLARI, getTemaResmi } from '../data';
 import MaskotDusunuyor from '../assets/maskot/dusunuyor.png'; 
 
-// Backend adresini otomatik belirle
-const API_URL = "https://kivilcim-v2-backend.onrender.com";
+// Eğer Vercel'deysen oradaki ayarı al, bilgisayardaysan localhost kullan
+const API_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
 
 const PlanlamaAtolyesi = () => {
   const navigate = useNavigate();

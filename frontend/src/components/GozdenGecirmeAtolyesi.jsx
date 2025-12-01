@@ -5,7 +5,8 @@ import MaskotNormal from '../assets/maskot/normal.png';
 import MaskotDusunuyor from '../assets/maskot/dusunuyor.png';
 import MaskotKonusuyor from '../assets/maskot/konusuyor.png'; 
 
-const API_URL = "https://kivilcim-v2-backend.onrender.com";
+// Eğer Vercel'deysen oradaki ayarı al, bilgisayardaysan localhost kullan
+const API_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5001';
 
 const GozdenGecirmeAtolyesi = () => {
   const navigate = useNavigate();
