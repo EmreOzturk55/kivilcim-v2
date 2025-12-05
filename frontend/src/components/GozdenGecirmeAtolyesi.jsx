@@ -73,19 +73,28 @@ const GozdenGecirmeAtolyesi = () => {
 
     // --- 2. ADIM: BUTONA VE TÜRE GÖRE PROMPT ---
 
-    // A) YAZIM KONTROLÜ (Sadeleştirilmiş Güvenli Mod)
+    // 1. YAZIM KONTROLÜ (5. SINIF SEVİYESİ - BASİT VE NET)
     if (kontrolTuru === 'yazim') {
-        aiTemperature = 0.0; // Hata bulurken yaratıcılık kapalı
-        sistemTalimati = `
-        Sen bir Yazım Denetimi asistanısın. Görevin metni T.Y.5.21'e göre taramak.
+      sistemTalimati = `
+        Sen 5. sınıf öğrencilerine rehberlik eden bir editörsün.
         
-        ${baglamBilgisi}
+        GÖREVİN:
+        Metne şöyle bir bakmak ve SADECE göze batan, bariz yazım yanlışlarını söylemek.
 
-        🛑 KURALLAR:
-        1. Sadece BARİZ hataları (Büyük harf, Nokta eksiği, Yanlış kelime) bul.
-        2. Doğru olan kısımları övme, listeleme.
-        3. Hata yoksa "Tebrikler! Yazım kurallarına harika uymuşsun." de.
-        `;
+        ŞUNLARA DİKKAT ET:
+        1. **Büyük Harf:** Cümle başları ve özel isimler (İnsan, Şehir) küçükse uyar. (Zaten büyükse bişey deme).
+        2. **Noktalama:** Cümle bitmiş ama sonunda nokta yoksa uyar.
+        3. **Yazım Yanlışları:** "geliyom", "yapcam", "herkez", "deyil", "yalnış" gibi kelimeler varsa uyar.
+        4. **Kesme İşareti:** "Ayşenin", "Ankarada" gibi ayrılmamış ekler varsa uyar.
+
+        ÇOK ÖNEMLİ:
+        - Eğer metin genel olarak düzgünse, ufak tefek şeyleri görmezden gel ve "Tebrikler! Yazım kurallarına gayet güzel uymuşsun." de.
+        - Asla olmayan hatayı varmış gibi gösterme.
+        - Cevabın kısa ve anlaşılır olsun.
+
+        CEVAP FORMATI (Sadece hata varsa):
+        * "YanlışKelime" -> Doğrusu: "DoğruKelime"
+      `;  
     }
     
     // B) AKIŞ KONTROLÜ (T.Y.5.20 - TÜRE ÖZEL)
@@ -101,7 +110,7 @@ const GozdenGecirmeAtolyesi = () => {
         } else { // Öykü ve Betimleme
             akisOdak = "Bu bir ÖYKÜ veya BETİMLEME. Cümleler birbirine 've, ama, çünkü' gibi bağlaçlarla bağlanmış mı? Çok fazla tekrar var mı?";
         }
-
+        aiTemperature = 0.4;
         sistemTalimati = `
         Sen bir Editörsün. Görevin metnin AKIŞINI (T.Y.5.20) incelemek.
         
@@ -109,7 +118,7 @@ const GozdenGecirmeAtolyesi = () => {
         ODAK NOKTASI: ${akisOdak}
 
         YAPILACAKLAR:
-        - Kopukluk varsa somut bağlaç öner (Bununla birlikte, Ardından vb.).
+        - Kopukluk varsa somut bağlaç öner (Bununla birlikte, Ardından, Sonuç olarak vb.).
         - Akış güzelse tebrik et.
         - Cevabın kısa ve anlaşılır olsun.
         `;
@@ -124,8 +133,8 @@ const GozdenGecirmeAtolyesi = () => {
         ${baglamBilgisi}
         
         - Giriş yapma.
-        - Sadece öğrencinin yazdığı kısma odaklanarak 1 TANE güçlü öneri ver.
-        - "Şurada bir benzetme yapsan nasıl olur?" de.
+        - Sadece öğrencinin yazdığı kısma odaklanarak 1 veya 2 TANE güçlü öneri ver.
+        - "Şurada bir benzetme veya kişileştirme yapsan nasıl olur?" de.
       `;
     }
 
